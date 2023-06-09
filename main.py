@@ -20,10 +20,18 @@ def retrieve_recomendation_and_price():
                 )
 
         # Send a message to the user with the recomendation
-        message = f"Tradingview recomendation is:{symbol,analisis.get_analysis().summary:.2f} USDT\n"
+        # Get the recommendation and price
+        recommendation = analisis.get_analysis().summary
+
+        # Send the message
+        message = f"{symbol}: {recommendation} ({symbol})"
         bot.send_message(chat_id='YOUR_CHAT_ID', text=message)
+
+        # Wait for 1 second to avoid hitting the API too frequently
+        time.sleep(1)
+
 
 # Set up the timer to run the function every 5 minutes
 while True:
-    retrieve_recomendation_and_price
-    time.sleep(300)
+    retrieve_recomendation_and_price()
+
