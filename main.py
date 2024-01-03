@@ -35,5 +35,7 @@ def retrieve_recomendation_and_price():
 
 # Set up the timer to run the function every 5 minutes
 while True:
+    print("Bot is running")
     retrieve_recomendation_and_price()
+
 
