@@ -2,11 +2,13 @@ import telebot
 from tradingview_ta import TA_Handler,Interval
 import time
 
+import config
+
 #Lists of criptos
 symbols = ["BTCUSDT", "ETHUSDT", "BNBUSDT", "XRPUSDT", "ADAUSDT", "SOLUSDT", "TRXUSDT", "LINKUSDT", "UNIUSDT"]
 
 # Set up the telegram bot
-bot = telebot.TeleBot(token='YOUR_BOT_TOKEN')
+bot = telebot.TeleBot(config.token)
 
 # Define the function
 def retrieve_recomendation_and_price():
@@ -25,7 +27,7 @@ def retrieve_recomendation_and_price():
 
         # Send the message
         message = f"{symbol}: {recommendation} ({symbol})"
-        bot.send_message(chat_id='YOUR_CHAT_ID', text=message)
+        bot.send_message(config.chat_id, text=message)
 
         # Wait for 1 second to avoid hitting the API too frequently
         time.sleep(1)
